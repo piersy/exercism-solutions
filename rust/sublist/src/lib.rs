@@ -7,5 +7,54 @@ pub enum Comparison {
 }
 
 pub fn sublist<T: PartialEq>(_first_list: &[T], _second_list: &[T]) -> Comparison {
-    todo!("Determine if the first list is equal to, sublist of, superlist of or unequal to the second list.");
+    if _first_list == _second_list {
+        return Comparison::Equal;
+    }
+    let short;
+    let long;
+    if _first_list.len() > _second_list.len() {
+        long = _first_list;
+        short = _second_list;
+    } else {
+        short = _first_list;
+        long = _second_list;
+    }
+    'outer: for i in 0..long.len() {
+        // Not enough space left
+        if long.len() - i < short.len() {
+            return Comparison::Unequal;
+        }
+        for j in 0..short.len() {
+            if long[i + j] != short[j] {
+                continue 'outer;
+            }
+            // if j == short.len() - 1 {
+            // if short.len() == long.len() {
+            //     return Comparison::Equal;
+            // } else if short == _first_list {
+            //     return Comparison::Sublist;
+            // } else if short == _second_list {
+            //     return Comparison::Superlist;
+            // }
+            // }
+            // if j == short.len() || i == long.len() {
+            //     break;
+            // }
+            // if long[i] == short[j] {
+            //     j += 1;
+            //     i += 1;
+            // } else {
+            //     j = 0;
+            // }
+        }
+        if short.len() == long.len() {
+            return Comparison::Equal;
+        } else if short == _first_list {
+            return Comparison::Sublist;
+        } else if short == _second_list {
+            return Comparison::Superlist;
+        }
+    }
+
+    Comparison::Unequal
 }
