@@ -24,24 +24,3 @@ pub fn anagrams_for<'a>(word: &str, possible_anagrams: &[&'a str]) -> HashSet<&'
             acc
         })
 }
-
-// fn is_anagram(char_map: &mut HashMap<char, i32>, word: &str) -> bool {
-//     for c in word.chars() {
-//         let o = char_map.get_mut(&c);
-//         match o {
-//             None => return false,
-//             Some(v) => {
-//                 *v -= 1;
-//                 if *v < 0 {
-//                     return false;
-//                 }
-//             }
-//         }
-//     }
-//     for x in char_map.values() {
-//         if *x > 0 {
-//             return false;
-//         }
-//     }
-//     true
-// }
