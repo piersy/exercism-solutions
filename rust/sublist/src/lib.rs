@@ -28,24 +28,6 @@ pub fn sublist<T: PartialEq>(_first_list: &[T], _second_list: &[T]) -> Compariso
             if long[i + j] != short[j] {
                 continue 'outer;
             }
-            // if j == short.len() - 1 {
-            // if short.len() == long.len() {
-            //     return Comparison::Equal;
-            // } else if short == _first_list {
-            //     return Comparison::Sublist;
-            // } else if short == _second_list {
-            //     return Comparison::Superlist;
-            // }
-            // }
-            // if j == short.len() || i == long.len() {
-            //     break;
-            // }
-            // if long[i] == short[j] {
-            //     j += 1;
-            //     i += 1;
-            // } else {
-            //     j = 0;
-            // }
         }
         if short.len() == long.len() {
             return Comparison::Equal;
