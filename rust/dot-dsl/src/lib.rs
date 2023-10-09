@@ -1,4 +1,6 @@
 pub mod graph {
+    use self::graph_items::edge::Edge;
+    use self::graph_items::node::Node;
     use std::collections::HashMap;
     pub struct Graph<'a> {
         pub nodes: Vec<graph_items::node::Node<'a>>,
@@ -14,12 +16,12 @@ pub mod graph {
                 attrs: HashMap::new(),
             }
         }
-        pub fn with_nodes(mut self, nodes: &Vec<graph_items::node::Node<'a>>) -> Self {
+        pub fn with_nodes(mut self, nodes: &Vec<Node<'a>>) -> Self {
             self.nodes = nodes.to_vec();
             // self.nodes = *nodes.clone();
             self
         }
-        pub fn with_edges(mut self, edges: &Vec<graph_items::edge::Edge<'a>>) -> Self {
+        pub fn with_edges(mut self, edges: &Vec<Edge<'a>>) -> Self {
             self.edges = edges.to_vec();
             self
         }
@@ -29,7 +31,7 @@ pub mod graph {
             }
             self
         }
-        pub fn get_node(&self, name: &str) -> Option<&'a graph_items::node::Node> {
+        pub fn get_node(&self, name: &str) -> Option<&'a Node> {
             self.nodes.iter().find(|n| n.v == name)
         }
     }
