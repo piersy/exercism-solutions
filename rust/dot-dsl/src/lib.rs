@@ -30,12 +30,7 @@ pub mod graph {
             self
         }
         pub fn get_node(&self, name: &str) -> Option<&'a graph_items::node::Node> {
-            for n in &self.nodes {
-                if n.v == name {
-                    return Some(n);
-                }
-            }
-            None
+            self.nodes.iter().find(|n| n.v == name)
         }
     }
 
@@ -87,10 +82,7 @@ pub mod graph {
                     self
                 }
                 pub fn get_attr(&self, name: &str) -> Option<&str> {
-                    match self.attrs.get(name) {
-                        Some(v) => Some(&v[..]),
-                        None => None,
-                    }
+                    self.attrs.get(name).map(|v| v.as_str())
                 }
             }
         }
